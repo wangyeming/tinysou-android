@@ -1,5 +1,6 @@
 # tinysou-android-sdk
 
+想在项目中学习，查看[demo](https://github.com/wangyeming/tinysou-android-sdk-demo/tree/master)
 
 ##介绍
 微搜索android-sdk，通过调用public接口，实现发送微搜索请求、接收处理微搜索响应等功能。目前支持的接口有：
