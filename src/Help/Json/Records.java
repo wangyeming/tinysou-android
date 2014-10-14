@@ -9,36 +9,36 @@ public class Records {
     protected Highlight highlight = null;
     protected Document document = null;
 
-    public void setCollection(String collection){
-        this.collection = collection;
-    }
-
-    public String getCollection(){
+    public String getCollection() {
         return collection;
     }
 
-    public void setScore(String score){
-        this.score = score;
+    public void setCollection(String collection) {
+        this.collection = collection;
     }
 
-    public String getScore(){
+    public String getScore() {
         return score;
     }
 
-    public void setHighlight(Highlight highlight){
-        this.highlight = highlight;
+    public void setScore(String score) {
+        this.score = score;
     }
 
-    public Highlight getHighlight(){
+    public Highlight getHighlight() {
         return highlight;
     }
 
-    public void setDocument(Document document){
-        this.document = document;
+    public void setHighlight(Highlight highlight) {
+        this.highlight = highlight;
     }
 
-    public Document getDocument(){
+    public Document getDocument() {
         return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
     }
 
 }
