@@ -1,4 +1,7 @@
 # tinysou-android-sdk
+
+=======
+
 想在项目中学习，查看[demo](https://github.com/wangyeming/tinysou-android-sdk-demo/tree/master)
 
 ##介绍
@@ -13,14 +16,14 @@
 ## 如何在应用中进行微搜索
 * 搜索API
   
-  定义你的微搜索的engine_token
+  定义你的微搜索的engine_key
 ```java
-    String engine_token = "示例token";
+    String engine_key = "示例key";
 ```
   发送搜索请求，获得搜索结果
 ```java
     //建立微搜索主机
-    TinySouClient client = new TinySouClient(engine_token);
+    TinySouClient client = new TinySouClient(engine_key);
     //设置搜索结果来自于第几页
     client.setPage(searchPage);
     //获得String格式的搜索结果
@@ -29,11 +32,11 @@
 
 * 自动补全API
 
-  定义你的微搜索的engine_token（同上）<br\>
+  定义你的微搜索的engine_key（同上）<br\>
   发送自动补全请求，获得自动补全结果
 ```java
     //建立微搜索主机
-    TinySouClient client = new TinySouClient(engine_token);
+    TinySouClient client = new TinySouClient(engine_key);
     //获得String格式的自动补全结果
     String result = client.AutoSearch(search_content);
 ```
