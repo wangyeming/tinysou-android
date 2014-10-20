@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by freestorm on 14-9-22.
+ * Created by tinysou on 14-9-22.
  * Author:Yeming Wang
  * Data: 2014.10.11
  * 简介：微搜索Json类，用于Json处理
@@ -17,27 +17,27 @@ public class TinySouJsonHelp {
     public void TinySouJsonHelp() {
     }
 
-    public Info getInfo() {
-        return info;
-    }
-
     public void setInfo(Info info) {
         this.info = info;
     }
 
-    public List<Records> getRecords() {
-        return records;
+    public Info getInfo() {
+        return info;
     }
 
     public void setRecords(List<Records> records) {
         this.records = records;
     }
 
-    public Errors getErrors() {
-        return errors;
+    public List<Records> getRecords() {
+        return records;
     }
 
     public void setErrors(Errors errors) {
         this.errors = errors;
+    }
+
+    public Errors getErrors() {
+        return errors;
     }
 }

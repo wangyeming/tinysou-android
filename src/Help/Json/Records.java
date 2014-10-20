@@ -1,7 +1,7 @@
 package Help.Json;
 
 /**
- * Created by freestorm on 14-10-13.
+ * Created by tinysou on 14-10-13.
  */
 public class Records {
     protected String collection = null;
@@ -9,36 +9,36 @@ public class Records {
     protected Highlight highlight = null;
     protected Document document = null;
 
-    public String getCollection() {
-        return collection;
-    }
-
     public void setCollection(String collection) {
         this.collection = collection;
     }
 
-    public String getScore() {
-        return score;
+    public String getCollection() {
+        return collection;
     }
 
     public void setScore(String score) {
         this.score = score;
     }
 
-    public Highlight getHighlight() {
-        return highlight;
+    public String getScore() {
+        return score;
     }
 
     public void setHighlight(Highlight highlight) {
         this.highlight = highlight;
     }
 
-    public Document getDocument() {
-        return document;
+    public Highlight getHighlight() {
+        return highlight;
     }
 
     public void setDocument(Document document) {
         this.document = document;
+    }
+
+    public Document getDocument() {
+        return document;
     }
 
 }

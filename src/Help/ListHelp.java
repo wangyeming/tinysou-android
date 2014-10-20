@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 import Help.Json.TinySouJsonHelp;
 
 /**
- * Created by freestorm on 14-9-24.
+ * Created by tinysou on 14-9-24.
  * Author:Yeming Wang
  * Data: 2014.10.11
  * 简介：处理微搜索结果，返回ListView格式
@@ -31,6 +31,18 @@ public class ListHelp {
 
     public List<Map<String, String>> getSearch() {
         return this.Search;
+    }
+
+    public List<Map<String, String>> getAutoCompleteList() {
+        return this.AutoCompleteList;
+    }
+
+    public List<String> getUrlList() {
+        return this.UrlList;
+    }
+
+    public int getMaxPage() {
+        return this.MaxPage;
     }
 
     /*
@@ -92,10 +104,6 @@ public class ListHelp {
         }
     }
 
-    public List<Map<String, String>> getAutoCompleteList() {
-        return this.AutoCompleteList;
-    }
-
     /*
     设置自动补全返回结果格式
     标号 标题   1 特性 微搜索
@@ -153,13 +161,5 @@ public class ListHelp {
             }
             this.MaxPage = total_page;
         }
-    }
-
-    public List<String> getUrlList() {
-        return this.UrlList;
-    }
-
-    public int getMaxPage() {
-        return this.MaxPage;
     }
 }

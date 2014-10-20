@@ -9,25 +9,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by freestorm on 14-9-22.
+ * Created by tinysou on 14-9-22.
  * Author:Yeming Wang
  * Data: 2014.10.11
  * 简介：建立微搜索主机，调用HttpHelp接口发送微搜索请求
  */
 public class TinySouClient {
     //权限验证
-    protected String engine_token = null;
+    protected String engine_key = null;
     //HTTP 请求方法 get 或 post
     protected String method = "post";
-    //HTTP 微搜索public 搜索url
+    //HTTP 微搜索public 搜索url````````
     protected String url = "http://api.tinysou.com/v1/public/search";
     //HTTP 微搜索public 自动补全url
     protected String url_as = "http://api.tinysou.com/v1/public/autocomplete";
     //显示的页数
     protected int page = 0;
+    //是否状态正常
+    protected boolean isError = false;
 
-    public TinySouClient(String engine_token) {
-        this.engine_token = engine_token;
+    public TinySouClient(String engine_key) {
+        this.engine_key = engine_key;
     }
 
     public void setPage(int page) {
@@ -42,9 +44,13 @@ public class TinySouClient {
         return this.url_as;
     }
 
+    public boolean isError(){
+        return this.isError;
+    }
+
     //建立搜索Request
     public HttpHelp buildRequest(final String SearchContent) {
-        final String EngineToken = this.engine_token;
+        final String EngineToken = this.engine_key;
         final int page = this.page;
         HttpHelp post_request = new HttpHelp();
         post_request
@@ -58,6 +64,7 @@ public class TinySouClient {
             public void onRequest(HttpHelp request) throws Exception {
                 // 设置发送请求的 header 信息
                 request.addHeader("Content-Type", "application/json");
+                System.out.println(request.getFirstHeader("Content-Type").getValue());
                 // 配置要 POST 的数据
                 JSONStringer search_content = new JSONStringer().object()
                         .key("q").value(SearchContent);
@@ -80,7 +87,8 @@ public class TinySouClient {
 
             @Override
             public String onFailed(int statusCode, HttpHelp request) throws Exception {
-                return "GET 请求失败：statusCode " + statusCode;
+                TinySouClient.this.isError = true;
+                return "POST请求失败：statusCode " + statusCode;
             }
         });
         return post_request;
@@ -89,7 +97,7 @@ public class TinySouClient {
 
     //建立自动补全Request
     public HttpHelp buildAsRequest(final String SearchContent) {
-        final String EngineToken = this.engine_token;
+        final String EngineToken = this.engine_key;
         HttpHelp post_request = new HttpHelp();
         post_request
                 .setCharset(HTTP.UTF_8)
@@ -128,7 +136,8 @@ public class TinySouClient {
 
             @Override
             public String onFailed(int statusCode, HttpHelp request) throws Exception {
-                return "GET 请求失败：statusCode " + statusCode;
+                TinySouClient.this.isError = true;
+                return "POST请求失败：statusCode " + statusCode;
             }
         });
         return post_request;
@@ -146,8 +155,10 @@ public class TinySouClient {
             content = request.post(SearchUrl);
         } catch (IOException e) {
             content = "IO异常：" + e.getMessage();
+            this.isError = true;
         } catch (Exception e) {
-            content = "异常：" + e.getMessage();
+            content = request.exceptionMessage;
+            this.isError = true;
         }
         return content;
     }
@@ -164,8 +175,10 @@ public class TinySouClient {
             content = request.post(SearchUrl);
         } catch (IOException e) {
             content = "IO异常：" + e.getMessage();
+            this.isError = true;
         } catch (Exception e) {
-            content = "异常：" + e.getMessage();
+            content = request.exceptionMessage;
+            this.isError = true;
         }
         return content;
     }
