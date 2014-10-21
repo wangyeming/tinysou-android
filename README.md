@@ -1,4 +1,4 @@
-# tinysou-android-sdk
+# tinysou-android-library
 
 =======
 
