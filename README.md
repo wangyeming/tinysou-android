@@ -37,6 +37,9 @@
 ```java
     //建立微搜索主机
     TinySouClient client = new TinySouClient(engine_key);
+    //设置请求参数
+    JSONObject json = new JSONObject( " {\"per_page\":10,\"engine_key\":\"0b732cc0ea3c11874190\",\"page\":0,\"c\":\"page\",\"q\":\"搜索\"}")
+    client.setSearchParams(json);
     //获得String格式的自动补全结果
     String result = client.AutoSearch(search_content);
 ```
@@ -46,6 +49,9 @@ tinysou-android-library提供使用fastjson获得json格式的搜索结果的方
 ```java
     //将String搜索结果转化为Json格式
     TinySouJsonHelp tinySouJsonHelp = JSON.parseObject(content, TinySouJsonHelp.class);
+    设置自动补全参数
+    JSONObject json = new JSONObject( " {\"per_page\":10,\"engine_key\":\"0b732cc0ea3c11874190\",\"page\":0,\"c\":\"page\",\"q\":\"搜索\"}")
+    client.setAcParams(json);
     //获取搜索结果指定项的值
     String firstTitle = tinySouJsonHelp.getRecords().get(0).getDocument().getTitle();
 ```
