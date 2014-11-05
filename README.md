@@ -18,16 +18,16 @@
   
   定义你的微搜索的engine_key
 ```java
-    String engine_key = "示例key";
+    String engineKey = "示例key";
 ```
   发送搜索请求，获得搜索结果
 ```java
     //建立微搜索主机
-    TinySouClient client = new TinySouClient(engine_key);
+    TinySouClient client = new TinySouClient(engineKey);
     //设置搜索结果来自于第几页
     client.setPage(searchPage);
     //获得String格式的搜索结果
-    String result = client.Search(search_content);
+    String result = client.Search(searchContent);
 ```
 
 * 自动补全API
@@ -36,12 +36,12 @@
   发送自动补全请求，获得自动补全结果
 ```java
     //建立微搜索主机
-    TinySouClient client = new TinySouClient(engine_key);
+    TinySouClient client = new TinySouClient(engineKey);
     //设置请求参数
     JSONObject json = new JSONObject( " {\"per_page\":10,\"engine_key\":\"0b732cc0ea3c11874190\",\"page\":0,\"c\":\"page\",\"q\":\"搜索\"}")
     client.setSearchParams(json);
     //获得String格式的自动补全结果
-    String result = client.AutoSearch(search_content);
+    String result = client.AutoSearch(searchContent);
 ```
 ## 如何获取搜索结果中指定标签的值
 tinysou-android-library提供使用fastjson获得json格式的搜索结果的方法。<br\>
