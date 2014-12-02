@@ -1,5 +1,6 @@
 package Help;
 
+
 import org.apache.http.entity.StringEntity;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
@@ -25,7 +26,7 @@ public class TinySouClient {
     //HTTP 微搜索public 自动补全url
     public final String urlAc = "http://api.tinysou.com/v1/public/autocomplete";
     //显示的页数
-    protected int page = 0;
+    protected int page = 1;
     //是否状态正常
     protected boolean isError = false;
     //搜索请求参数
@@ -94,7 +95,7 @@ public class TinySouClient {
                 String body = searchParams.toString();
                 //String search_params = " {\"per_page\":10,\"engine_key\":\"0b732cc0ea3c11874190\",\"page\":0,\"c\":\"page\",\"q\":\"搜索\"}";
                 StringEntity entity = new StringEntity(body, CHARSET);
-                request.buildPostEntity(entity);
+                request.buildRequestEntity("POST", entity);
             }
 
             @Override
@@ -139,8 +140,9 @@ public class TinySouClient {
                     acParams.accumulate("per_page", "10");
                 }
                 String body = acParams.toString();
+                System.out.println(body);
                 StringEntity entity = new StringEntity(body, CHARSET);
-                request.buildPostEntity(entity);
+                request.buildRequestEntity("POST", entity);
             }
 
             @Override
