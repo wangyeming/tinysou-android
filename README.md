@@ -10,7 +10,7 @@
 * 自动补全API
 
 ## 如何使用
-* 导入tinysou-android-library-v1.00.jar到android project的libs/目录中
+* 导入tinysou-android-library-v1.01.jar到android project的libs/目录中
 * Android studio中，鼠标右击jar文件，选择Add As Library
 
 ## 如何在应用中进行微搜索
@@ -38,7 +38,7 @@
     //建立微搜索主机
     TinySouClient client = new TinySouClient(engineKey);
     //设置请求参数
-    JSONObject json = new JSONObject( " {\"per_page\":10,\"engine_key\":\"0b732cc0ea3c11874190\",\"page\":0,\"c\":\"page\",\"q\":\"搜索\"}")
+    JSONObject json = new JSONObject( " {\"per_page\":10,\"engine_key\":\"0b732cc0ea3c11874190\",\"page\":1,\"c\":\"page\",\"q\":\"搜索\"}")
     client.setSearchParams(json);
     //获得String格式的自动补全结果
     String result = client.AutoSearch(searchContent);
@@ -50,9 +50,9 @@ tinysou-android-library提供使用fastjson获得json格式的搜索结果的方
     //将String搜索结果转化为Json格式
     TinySouJsonHelp tinySouJsonHelp = JSON.parseObject(content, TinySouJsonHelp.class);
     设置自动补全参数
-    JSONObject json = new JSONObject( " {\"per_page\":10,\"engine_key\":\"0b732cc0ea3c11874190\",\"page\":0,\"c\":\"page\",\"q\":\"搜索\"}")
+    JSONObject json = new JSONObject( " {\"per_page\":10,\"engine_key\":\"0b732cc0ea3c11874190\",\"page\":1,\"c\":\"page\",\"q\":\"搜索\"}")
     client.setAcParams(json);
     //获取搜索结果指定项的值
-    String firstTitle = tinySouJsonHelp.getRecords().get(0).getDocument().getTitle();
+    String firstTitle = tinySouJsonHelp.records.get(0).document.title;
 ```
 其他参数的获取方法请参考API文档。
